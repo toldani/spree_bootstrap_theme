@@ -1,0 +1,31 @@
+%body{class: body_class, "data-hook" => "body", id: @body_id || 'default'}
+  %header#header{"data-hook" => ""}
+    .navbar
+      .navbar-inner
+        .container-fluid
+          %figure#logo{"data-hook" => ""}
+            = link_to image_tag(Spree::Config[:logo],  alt: "Logo", id: "logo"), root_url, class: 'brand'
+          %ul#nav-bar.nav{"data-hook" => ""}
+            %li
+              = form_tag products_url, method: :get, class: 'navbar-form' do
+                %input#s1.search-query{name: "keywords", placeholder: "Search", type: "search"}/
+          %ul#main-nav-bar.nav.pull-right{"data-hook" => ""}
+            %li#link-to-cart{"data-hook" => ""}= link_to_cart
+  #wrapper{"data-hook" => ""}
+    .container-fluid
+      .row-fluid
+        - if content_for?(:sidebar)
+          %aside#sidebar.span2{"data-hook" => ""}
+            = yield :sidebar
+        #content.if.else{class: "<haml:silent> !content_for?(:sidebar) </haml:silent><haml:block>span12</haml:block><haml:silent> </haml:silent><haml:block>span10</haml:block>", "data-hook" => ""}
+          = breadcrumbs(@taxon)
+          = flash_messages
+          = yield
+  %footer#footer{"data-hook" => ""}
+    .container-fluid
+      #footer-left.span6{"data-hook" => ""}
+        %p
+          = t(:powered_by)
+          = link_to 'Spree', 'http://spreecommerce.com/'
+      #footer-right.span6{"data-hook" => ""}
+  = render partial: 'spree/shared/google_analytics'

@@ -1,0 +1,17 @@
+.row-fluid
+  #homeCarousel.carousel.offset2.span8.well
+    .carousel-inner
+      - if @products.any?
+        - @products.limit(3).each do |product|
+          - if Spree::Config[:show_zero_stock_products] || product.has_stock?
+            %div{class: @products.first == product ? "item active" : "item"}
+              = large_image(product, itemprop: "image")
+              .carousel-caption
+                %h4= product.name
+                %p= product.description[0..200] + "..."
+    %a.carousel-control.left{"data-slide" => "prev", href: "#homeCarousel"} ‹
+    %a.carousel-control.right{"data-slide" => "next", href: "#homeCarousel"} ›
+/ Not sure why I need this extra div
+.row-fluid
+  %div{"data-hook" => "homepage_products"}
+    = render partial: 'spree/shared/products', locals: {products: @products}
