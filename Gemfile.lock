@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     spree_bootstrap_theme (0.1.0)
-      bootstrap-sass (~> 2.0.1)
+      bootstrap-sass (~> 2.3)
       deface (>= 1.0.0.rc2)
       haml
       haml-rails
@@ -60,7 +60,8 @@ GEM
       json (~> 1.4)
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
-    bootstrap-sass (2.0.4.2)
+    bootstrap-sass (2.3.1.2)
+      sass (~> 3.2)
     builder (3.0.4)
     cancan (1.6.8)
     capybara (1.0.1)
@@ -178,6 +179,7 @@ GEM
     ruby_core_source (0.1.5)
       archive-tar-minitar (>= 0.5.2)
     rubyzip (0.9.9)
+    sass (3.2.9)
     selenium-webdriver (2.33.0)
       childprocess (>= 0.2.5)
       multi_json (~> 1.0)

@@ -1,19 +1,37 @@
 %body{class: body_class, "data-hook" => "body", id: @body_id || 'default'}
   %header#header{"data-hook" => ""}
-    .navbar
-      .navbar-inner
-        .container-fluid
-          %figure#logo{"data-hook" => ""}
-            = link_to image_tag(Spree::Config[:logo],  alt: "Logo", id: "logo"), root_url, class: 'brand'
-          %ul#nav-bar.nav{"data-hook" => ""}
-            %li
+    .container
+      .topbar
+        .top-row
+          .row
+            .span4.customer-service
+              %span.live-chat Live Chat Available | Customer Service
+              %span.phone 888-816-0610
+            .span4.proudly-made-in-nyc
+              Proudly Made Bespoke in New York City
+            .span2.search-form
               = form_tag products_url, method: :get, class: 'navbar-form' do
                 %input#s1.search-query{name: "keywords", placeholder: "Search", type: "search"}/
-          %ul#main-nav-bar.nav.pull-right{"data-hook" => ""}
-            %li#link-to-cart{"data-hook" => ""}= link_to_cart
+            .span2.minicart
+              #link-to-cart{"data-hook" => ""}= link_to_cart
+        .bottom-row
+          .row
+            .span12
+              .hours MON-FRI 8AM-5PM EST
+      .logobar
+        = link_to image_tag('/assets/logo.gif'), root_path
+      .navbar
+        .navbar-inner
+          .container
+            %ul.nav
+              %li= link_to 'Diamonds', '#'
+              %li= link_to 'Engagement Rings', '#'
+              %li= link_to 'Education', '#'
+              %li= link_to 'About', '#'
+              %li= link_to 'Contact', '#'
   #wrapper{"data-hook" => ""}
-    .container-fluid
-      .row-fluid
+    .container
+      .row
         - if content_for?(:sidebar)
           %aside#sidebar.span2{"data-hook" => ""}
             = yield :sidebar
@@ -27,10 +45,11 @@
             = flash_messages
             = yield
   %footer#footer{"data-hook" => ""}
-    .container-fluid
-      #footer-left.span6{"data-hook" => ""}
-        %p
-          = t(:powered_by)
-          = link_to 'Spree', 'http://spreecommerce.com/'
-      #footer-right.span6{"data-hook" => ""}
+    .container
+      .row
+        #footer-left.span6{"data-hook" => ""}
+          %p
+            = t(:powered_by)
+            = link_to 'Spree', 'http://spreecommerce.com/'
+        #footer-right.span6{"data-hook" => ""}
   = render partial: 'spree/shared/google_analytics'

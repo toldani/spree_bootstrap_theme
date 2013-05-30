@@ -1,8 +1,8 @@
 %div{"data-hook" => "product_show", itemscope: "", itemtype: "http://schema.org/Product"}
   - @body_id = 'product-details'
-  .row-fluid
+  .row
     .span7{"data-hook" => "product_left_part"}
-      .row-fluid{"data-hook" => "product_left_part_wrap"}
+      .row{"data-hook" => "product_left_part_wrap"}
         #product-images{"data-hook" => "product_images"}
           #main-image{"data-hook" => ""}
             = render partial: 'image'
@@ -11,7 +11,7 @@
         %div{"data-hook" => "product_properties"}
           = render partial: 'properties'
     .span5{"data-hook" => "product_right_part"}
-      .row-fluid{"data-hook" => "product_right_part_wrap"}
+      .row{"data-hook" => "product_right_part_wrap"}
         #product-description{"data-hook" => "product_description"}
           %h1.product-title{itemprop: "name"}= accurate_title
           %div{"data-hook" => "product_description", itemprop: "description"}

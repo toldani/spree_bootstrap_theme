@@ -1,11 +1,14 @@
+$baseBorderRadius: 0;
+$borderRadiusLarge: 0;
+$borderRadiusSmall: 0;
+
 @import "bootstrap";
 @import "bootstrap-responsive";
 @import "store/spree_bootstrap_mixins";
 @import "store/spree_core_stripped";
 
-
-// BOOTSTRIP
 header {
+
   figure {
     display: inline;
     border: 0px;
@@ -31,7 +34,6 @@ header {
       display: inline-block;
       list-style-type: none;
     }
-
   }
 }
 // END BOOTSTRIP
