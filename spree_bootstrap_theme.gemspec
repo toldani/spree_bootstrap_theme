@@ -16,6 +16,9 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
+  s.add_dependency 'deface', '>= 1.0.0.rc2'
+  s.add_dependency 'haml'
+  s.add_dependency 'haml-rails'
   s.add_dependency 'spree_core'
   s.add_dependency 'bootstrap-sass', '~> 2.0.1'
 
