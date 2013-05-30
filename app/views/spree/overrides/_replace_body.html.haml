@@ -17,10 +17,15 @@
         - if content_for?(:sidebar)
           %aside#sidebar.span2{"data-hook" => ""}
             = yield :sidebar
-        #content.if.else{class: "<haml:silent> !content_for?(:sidebar) </haml:silent><haml:block>span12</haml:block><haml:silent> </haml:silent><haml:block>span10</haml:block>", "data-hook" => ""}
-          = breadcrumbs(@taxon)
-          = flash_messages
-          = yield
+          #content.span10{"data-hook" => ""}
+            = breadcrumbs(@taxon)
+            = flash_messages
+            = yield
+        - else
+          #content.span12{"data-hook" => ""}
+            = breadcrumbs(@taxon)
+            = flash_messages
+            = yield
   %footer#footer{"data-hook" => ""}
     .container-fluid
       #footer-left.span6{"data-hook" => ""}
