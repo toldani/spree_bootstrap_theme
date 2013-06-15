@@ -1,4 +1,6 @@
 %body{class: body_class, "data-hook" => "body", id: @body_id || 'default'}
+  = render 'shared/constants'
+  = render 'shared/print_logo'
   %header#header{"data-hook" => ""}
     .container
       .topbar
@@ -33,12 +35,12 @@
     .container
       .row
         - if content_for?(:sidebar)
-          %aside#sidebar.span2{"data-hook" => ""}
-            = yield :sidebar
-          #content.span10{"data-hook" => ""}
+          #content.span9{"data-hook" => ""}
             = breadcrumbs(@taxon)
             = flash_messages
             = yield
+          %aside#sidebar.span3{"data-hook" => ""}
+            = yield :sidebar
         - else
           #content.span12{"data-hook" => ""}
             = breadcrumbs(@taxon)
@@ -46,10 +48,10 @@
             = yield
   %footer#footer{"data-hook" => ""}
     .container
+      %hr
       .row
         #footer-left.span6{"data-hook" => ""}
-          %p
-            = t(:powered_by)
-            = link_to 'Spree', 'http://spreecommerce.com/'
+          %p= "&copy; #{Time.now.year} Enchanted Diamonds".html_safe
         #footer-right.span6{"data-hook" => ""}
+      %br
   = render partial: 'spree/shared/google_analytics'
