@@ -1,21 +1,20 @@
-%div{"data-hook" => "product_show", itemscope: "", itemtype: "http://schema.org/Product"}
+#product_container{"data-hook" => "product_show", :itemscope => "", :itemtype => "http://schema.org/Product", "data-taxonomy" => @product_meta.class.name}
+  = render 'shared/print_logo'
   - @body_id = 'product-details'
-  .row
-    .span7{"data-hook" => "product_left_part"}
-      .row{"data-hook" => "product_left_part_wrap"}
-        #product-images{"data-hook" => "product_images"}
-          #main-image{"data-hook" => ""}
-            = render partial: 'image'
-          #thumbnails{"data-hook" => ""}
-            = render partial: 'thumbnails', locals: {product: @product}
-        %div{"data-hook" => "product_properties"}
-          = render partial: 'properties'
-    .span5{"data-hook" => "product_right_part"}
-      .row{"data-hook" => "product_right_part_wrap"}
+  = render 'header'
+  .alpha{"data-hook" => "product_left_part"}
+    .row-fluid{"data-hook" => "product_left_part_wrap"}
+      %div{"data-hook" => "product_properties"}
+        = render 'properties'
+      #product-images{"data-hook" => "product_images"}
+        #main-image{"data-hook" => ""}
+          = render 'image' if @product.images.any?
+        #thumbnails{"data-hook" => ""}
+          = render 'thumbnails'
+  - content_for :sidebar do
+    .omega{"data-hook" => "product_right_part"}
+      .row-fluid{"data-hook" => "product_right_part_wrap"}
         #product-description{"data-hook" => "product_description"}
-          %h1.product-title{itemprop: "name"}= accurate_title
-          %div{"data-hook" => "product_description", itemprop: "description"}
-            = product_description(@product) rescue t(:product_has_no_description)
-          #cart-form{"data-hook" => "cart_form"}
-            = render partial: 'cart_form'
-        = render partial: 'taxons'
+          %h3.product-title{itemprop: "name"}= accurate_title
+        = render 'actions'
+        = render 'taxons'
