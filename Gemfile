@@ -1,13 +1,10 @@
 source 'http://rubygems.org'
+ruby '1.9.3'
 
 group :test do
   gem 'ffaker'
 end
 
-if RUBY_VERSION < "1.9"
-  gem "ruby-debug"
-else
-  gem "ruby-debug19"
-end
+gem "debugger"
 
 gemspec

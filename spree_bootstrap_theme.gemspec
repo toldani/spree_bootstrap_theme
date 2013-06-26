@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'deface', '>= 1.0.0.rc2'
   s.add_dependency 'haml'
   s.add_dependency 'haml-rails'
-  s.add_dependency 'spree_core'
+  s.add_dependency 'spree_core', '~> 2.0'
   s.add_dependency 'bootstrap-sass', '~> 2.3'
 
   s.add_development_dependency 'capybara', '1.0.1'
